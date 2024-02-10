@@ -16,18 +16,20 @@ pip install git+https://github.com/rashidkhanrk06/neatpy.git
 import pandas as pd
 import neatpy 
 
+df = pd.read_csv('Netflix.csv')
+
 # Example 1: Convert strings to integers
-data = pd.Series(['123.45', '456.78', '789.0'])
+data = pd.Series(['$3,233', '$1,456', '$789'])
 result = neatpy.to_integer(data, dtype=int)
 print(result)
 
 # Example 2: Remove digits and/or punctuation
-data = pd.Series(['Hello, 123!', 'World456', 'Python'])
-result = neatpy.to_text(data, punct=True, keep=['o', '5'], keep_num=2)
+data = pd.Series(['Hello?, 123!', 'World,456', 'Python'])
+result = neatpy.to_text(data, keep='!', keep_num=2)
 print(result)
 
 # Example 3: Remove alphanumeric characters
-data = pd.Series(['Hello123', 'World456', 'Python'])
+data = pd.Series(['$Hello12', 'World46@', 'Python?'])
 result = neatpy.to_specialChr(data)
 print(result)
 
